@@ -4,10 +4,16 @@ import django
 import pandas as pd
 
 # I wrote this code guided by lecture material where script is written for populating data
-sys.path.append(os.path.join('..', 'midtermProject'))
 
+# Add the parent directory to the Python path
+current_dir = os.path.abspath(os.path.dirname(__file__))
+parent_dir = os.path.abspath(os.path.join(current_dir, '..', '..'))
+sys.path.append(parent_dir)
 
+# Set the DJANGO_SETTINGS_MODULE environment variable
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'midtermProject.settings')
+
+# Initialize Django
 django.setup()
 # I wrote code I wrote guided by lecture material where script is written for populating data 
 
@@ -27,14 +33,15 @@ def load_data():
     delete_current_data()
 
     
-    # Asbolute path to csv files
-    csv_dir = os.path.join(os.getcwd(), 'csv_data_files')
+    current_dir = os.path.dirname(__file__)
+    # Construct the path to the CSV files directory
+    csv_dir = os.path.join(current_dir, '..', '..', 'csv_data_files')
 
-    # Relative path based off absolute path
-    relative_csv_dir = os.path.relpath(csv_dir, start=os.getcwd())
 
-    # Load organism csv 
-    organism_csv_file_path = os.path.join(relative_csv_dir, 'Organism.csv')
+
+
+    # Load data from Organism.csv using pandas
+    organism_csv_file_path = os.path.join(csv_dir, 'Organism.csv')
     organism_dataframe = pd.read_csv(organism_csv_file_path)
 
 
@@ -49,9 +56,10 @@ def load_data():
         )
 
     # Construct the relative path to the Protein.csv file using os.path.join()
-    protein_csv_file_path = os.path.join(relative_csv_dir, 'Protein.csv')
+    protein_csv_file_path = os.path.join(csv_dir, 'Protein.csv')
     # Read the Protein.csv file into a DataFrame
     protein_dataframe = pd.read_csv(protein_csv_file_path)
+
 
 
     # iterate over each row in protein dataframe
@@ -82,8 +90,8 @@ def load_data():
                 taxa_id=organism
             )
 
-    sequence_csv_file_path = os.path.join(relative_csv_dir, 'Sequence.csv')
     # Load data from Sequence.csv using pandas
+    sequence_csv_file_path = os.path.join(csv_dir, 'Sequence.csv')
     sequence_dataframe = pd.read_csv(sequence_csv_file_path)
 
 
@@ -102,8 +110,8 @@ def load_data():
             )
 
 
-    domain_csv_file_path = os.path.join(relative_csv_dir, 'Domain.csv')
     # Load data from Domain.csv using pandas
+    domain_csv_file_path = os.path.join(csv_dir, 'Domain.csv')
     domain_dataframe = pd.read_csv(domain_csv_file_path)
 
 
@@ -124,9 +132,8 @@ def load_data():
             # associates domain object with filtered proteins by adding them to Many to Many field of domain object
             domain.protein_id.set(proteins)
 
-    # Load data from PfamID.csv using pandas 
-    pfamID_csv_file_path = os.path.join(relative_csv_dir, 'PfamID.csv')
     # Load data from PfamID.csv using pandas
+    pfamID_csv_file_path = os.path.join(csv_dir, 'PfamID.csv')
     pfamID_dataframe = pd.read_csv(pfamID_csv_file_path)
 
 

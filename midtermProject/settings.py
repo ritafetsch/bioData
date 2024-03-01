@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = ['django-insecure-mx@k*5x%$!^unmflb14!watljgom=i+k9=1cmfm@#**jl4u%pq']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1',
                  'localhost']
@@ -127,7 +127,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-STATIC_ROOT = 'midterm/midtermProject/midtermBioData/static'
+STATIC_ROOT = 'midtermProject/midtermBioData/static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
