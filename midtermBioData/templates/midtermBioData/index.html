@@ -1,0 +1,28 @@
+{% extends "./base.html" %}
+{% load bootstrap4 %}
+
+<!-- I wrote this code -->
+{% block content %}
+    <h3> API Endpoints: </h3>
+    <div id="endpoints"> 
+        <p> <b> <em> GET  http://127.0.0.1:8000/api/protein/[PROTEIN ID] </b> </em>- return the protein sequence and all we know about it </p>
+        <p> e.g. <a href="api/protein/A0A016S8J7"> http://127.0.0.1:8000/api/protein/A0A016S8J7 </a> </p>
+        
+        <p> <b> <em> GET  http://127.0.0.1:8000/api/pfam/[PFAM ID]  </b> </em>- return the domain and it's description </p>
+        <p> e.g. <a href="api/pfam/PF00360 ">http://127.0.0.1:8000/api/pfam/PF00360  </a> </p>
+
+        <p> <b> <em> GET  http://127.0.0.1:8000/api/proteins/[TAXA ID]  </b> </em>- return a list of all proteins for a given organism </p>
+        <p> e.g. <a href="api/proteins/55661 ">http://127.0.0.1:8000/api/proteins/55661  </a> </p>
+        
+        <p> <b> <em> GET  http://127.0.0.1:8000/api/pfams/[TAXA ID]  </b> </em>-  return a list of all domains in all the proteins for a given organism</p>
+        <p> e.g. <a href="api/pfams/55661 ">http://127.0.0.1:8000/api/pfams/55661   </a> </p>
+        
+        <p> <b> <em>GET  http://127.0.0.1:8000/api/coverage/[PROTEIN ID]   </b> </em>-  return a list of all domains in all the proteins for a given organism</p>
+        <p> e.g. <a href="api/coverage/A0A016S8J7">http://127.0.0.1:8000/api/coverage/A0A016S8J7   </a> </p>
+
+        <h3> Add Protein: </h3>
+        <p> <b> <em> POST http://127.0.0.1:8000/api/protein/  </b> </em>-   add a new record</p>
+        <p> e.g. <a href="/proteins"> http://127.0.0.1:8000/proteins/    </a> </p>
+    </div>
+{% endblock %}
+<!-- end of code I wrote  -->

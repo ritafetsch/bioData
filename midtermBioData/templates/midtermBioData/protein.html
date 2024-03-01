@@ -1,0 +1,40 @@
+{% extends "./base.html" %}
+{% load bootstrap4 %}
+
+
+{% block content %}
+<h1>Proteins</h1>
+
+<!-- This code is personally adapted but structurally inspired by lecture content -->
+<table class="table-key">       
+    <tr><th>Protein ID: {{ first_protein.protein_id }}</th></tr>         
+    <tr><td>Sequence: </td><td>{{ sequence.sequence }}</td></tr>
+    <tr><td>Length: </td><td>{{ first_protein.length }}</td></tr> 
+    <tr><th>Taxonomy: </th></tr>
+    <tr><td>Taxa ID: </td><td>{{ first_protein.taxa_id }}</td></tr>         
+    <tr><td>Clade: </td><td>{{ first_protein.clade }}</td></tr> 
+    <tr><td>Genus: </td><td>{{ organism.genus }}</td></tr> 
+    <tr><td>Species: </td><td>{{ organism.species }}</td></tr>
+    <tr><td>----------</td><td>-----------------</td></tr> 
+                    
+    {% if domains %}
+    <tr><th >Domains: </th></tr>
+    {% for domain in domains %}
+        <tr ><td>Pfam ID:</td><td>{{ domain.pfam_id }}</td></tr>
+        <tr><td>Description:</td><td>{{ domain.description }}</td></tr>
+        <tr><td>Start:</td><td>{{ domain.start }}</td></tr>
+        <tr><td>Stop:</td><td>{{ domain.stop }}</td></tr>
+        <tr><td>----------</td><td>-----------------</td></tr> 
+        {% for pfam_id in pfam_ids %}
+            {% if pfam_id.domain_id.pfam_id == domain.pfam_id %}
+            <tr><td>Domain: ID</td><td>{{ pfam_id.domain_id }}</td></tr>
+            <tr><td>Domain Description:</td><td>{{ pfam_id.domain_description }}</td></tr>
+            <tr><td>----------</td><td>-----------------</td></tr> 
+            <tr><td>----------</td><td>-----------------</td></tr> 
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+    {% endif %}      
+<!-- End of code personally adapted but structurally inspired by lecture content -->      
+</table>
+{% endblock %}
