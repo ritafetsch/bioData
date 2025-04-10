@@ -1,0 +1,32 @@
+# Virtual Environment
+web-dev-venv/
+
+# Compiled Python files
+*.pyc
+*.pyo
+__pycache__/
+
+# IDE/Editor Files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Environment Configuration
+.env
+
+# Database
+db.sqlite3
+
+# Dependency Management
+Pipfile
+Pipfile.lock
+
+# Log Files
+*.log
+
+# Compiled Assets
+dist/
+build/

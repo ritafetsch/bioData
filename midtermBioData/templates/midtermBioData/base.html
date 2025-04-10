@@ -1,0 +1,13 @@
+
+<!-- This code is written guided by lecture content -->
+{%load bootstrap4 %}
+{% load static %}
+{% include "./header.html" %}
+{% include "./title.html" %}
+
+<div class="content">
+    {% block content %} Did not render content {% endblock %}
+</div>
+
+{% include "./footer.html" %}
+<!-- End of code written guided by lecture content -->

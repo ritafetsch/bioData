@@ -1,0 +1,66 @@
+{% extends "./base.html" %}
+
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <h1>Proteins</h1>
+<!-- I wrote this code  -->
+    <div class="container">
+        <div class="proteins-list">
+            <table>
+                <tr>
+                    <th>Protein ID</th>
+                </tr>
+                {% for protein in proteins %}
+                    <tr>
+                        <td><a href="/protein/{{protein.protein_id}}">{{protein.protein_id}}</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+<!--End of code I wrote -->
+
+<!-- I wrote this code but consulted documentation for django forms -->
+        <div class="form-container">
+            <h2>Add Protein</h2>
+            <form method="POST" action="/proteins/">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_protein_id">Protein ID:</label>
+                    {{ form.protein_id }}
+                </div>
+                <div class="form-group">
+                    <label for="id_clade">Clade:</label>
+                    {{ form.clade }}
+                </div>
+                <div class="form-group">
+                    <label for="id_length">Length:</label>
+                    {{ form.length }}
+                </div>
+                <div class="form-group">
+                    <label for="id_pfam_id">Pfam ID:</label>
+                    {{ form.pfam_id }}
+                </div>
+                <div class="form-group">
+                    <label for="id_taxa_id">Taxa ID:</label>
+                    {{ form.taxa_id }}
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+ <!-- End of I wrote while consulting documentation for django forms -->      
+
+ <!-- I wrote this code but researched online how to embed the message -->      
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+ <!-- End of code I wrote researching online how to embed the message -->      
+    </div>
+  
+{% endblock %}
+

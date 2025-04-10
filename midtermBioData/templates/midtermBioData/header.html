@@ -1,0 +1,31 @@
+{% load bootstrap4 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+<!-- This code comes from lecture material -->
+        {% bootstrap_css %}
+        {% bootstrap_javascript jquery='full' %}
+        <link rel="stylesheet" type="text/css"  href="{% static '/css/biodata.css' %}">
+<!-- End of code from lecture material -->
+        <style> 
+        /* I wrote this code */
+        .container {
+            display: flex;
+            justify-content: flex-start;
+        }
+        .proteins-list {
+            flex: 1;
+            border-right: 1px solid #ccc;
+            padding-right: 20px;  
+        }
+        .form-container {
+            flex: 7;
+            padding-left: 20px;
+        }
+        /* end of code I wrote  */
+        </style>
+    </head>
+    <body>
+       
