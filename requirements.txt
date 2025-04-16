@@ -20,3 +20,5 @@ sqlparse==0.4.4
 tzdata==2023.3
 urllib3==2.0.3
 numpy==1.24.4
+psycopg2-binary
+gunicorn==21.2.0
