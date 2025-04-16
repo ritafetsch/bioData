@@ -16,8 +16,9 @@ RUN pip install gunicorn dj-database-url psycopg2-binary
 # Copy project files
 COPY . .
 
-# Collect static files
-RUN python manage.py collectstatic --noinput
+# Make start.sh executable
+COPY start.sh .
+RUN chmod +x start.sh
 
 # Use the startup script
-CMD ["bash", "/app/start.sh"]
+CMD ["./start.sh"]

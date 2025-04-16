@@ -1,11 +1,13 @@
 #!/bin/bash
 set -e
 
-# Run migrations
+echo "Starting Django deployment"
+
+echo "Running migrations..."
 python manage.py migrate
 
-# Populate data
+echo "Populating data..."
 python midtermBioData/scripts/populate_data.py
 
-# Start the application
+echo "Starting gunicorn server..."
 gunicorn midtermProject.wsgi:application --bind 0.0.0.0:$PORT
