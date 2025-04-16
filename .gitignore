@@ -1,5 +1,5 @@
 # Virtual Environment
-web-dev-venv/
+venv/
 
 # Compiled Python files
 *.pyc
