@@ -141,10 +141,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'  # This MUST have a leading slash
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATIC_ROOT = 'midtermProject/midtermBioData/static'
-
+# You can also define where Django should look for static files during development
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'midtermBioData/static'),
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
