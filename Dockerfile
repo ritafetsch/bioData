@@ -11,7 +11,7 @@ WORKDIR /app
 # Copy requirements and install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install gunicorn
+RUN pip install gunicorn dj-database-url psycopg2-binary
 
 # Copy project files
 COPY . .
@@ -19,5 +19,5 @@ COPY . .
 # Collect static files
 RUN python manage.py collectstatic --noinput
 
-# Run migrations
-CMD python manage.py migrate && gunicorn midtermProject.wsgi:application --bind 0.0.0.0:$PORT
+# Use the startup script
+CMD ["bash", "/app/start.sh"]
